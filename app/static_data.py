@@ -3,3 +3,10 @@ ROLE_CHOICES = (
     ("secretaria", "Secretária"),
     ("medico", "Médico"),
 )
+
+STATUS_CONSULTA = (
+    ("agendado", "Agendado"),
+    ("confirmado", "Confirmado"),
+    ("cancelado", "Cancelado"),
+    ("concluido", "Concluido"),
+)

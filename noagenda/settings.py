@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'consultorios',
     'pacientes',
+    'usuarios',
+    'consultas',
 ]
 
 MIDDLEWARE = [
@@ -61,6 +63,9 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'noagenda.urls'
+
+AUTH_USER_MODEL = "usuarios.UsuarioSistema"
+
 
 TEMPLATES = [
     {
