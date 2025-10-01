@@ -1,0 +1,16 @@
+{% extends 'app/base.html' %}
+{% block content %}
+    <h1>Médicos do consultório {{ request.user.consultorio.nome }}</h1>
+
+    {% if medicos %}
+        <ul>
+            {% for medico in medicos %}
+                <li>{{ medico.username }} ({{ medico.email }})</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>⚠️ Ainda não há médicos cadastrados neste consultório.</p>
+    {% endif %}
+
+    <a href="{% url 'home' %}">⬅️ Voltar para Home</a>
+{% endblock %}

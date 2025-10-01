@@ -1,9 +1,36 @@
-{% extends 'app/base.html' %}
-{% block content %}
-
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
     <h1>Bem-vindo, {{ user.username }}!</h1>
-    <p>Você está logado no sistema.</p>
 
+    {% if user.consultorio %}
+        <p>Você pertence ao consultório: <strong>{{ user.consultorio.nome }}</strong></p>
+    {% else %}
+        <p>Você ainda não tem um consultório cadastrado.</p>
+        <a href="{% url 'criar_consultorio' %}">➕ Criar Consultório</a>
+    {% endif %}
+
+    <hr>
+
+    {% if user.role == "consultorio" %}
+        <h2>Menu do Administrador do Consultório</h2>
+        <ul>
+            <li><a href="{% url 'medicos_list' %}">👨‍⚕️ Médicos</a></li>
+            <li><a href="{% url 'secretarias_list' %}">🧑‍💼 Secretárias</a></li>
+        </ul>
+    {% elif user.role == "medico" %}
+        <h2>Menu do Médico</h2>
+        <p>Aqui você verá seus pacientes e consultas.</p>
+    {% elif user.role == "secretaria" %}
+        <h2>Menu da Secretária</h2>
+        <p>Aqui você verá a agenda e suporte ao consultório.</p>
+    {% endif %}
+
+    <hr>
     <a href="{% url 'logout' %}">Sair</a>
-
-{% endblock %}
+</body>
+</html>
